@@ -4,11 +4,11 @@
     <title>Report Of Ill Traveler</title>
     <script>
         function outputJson() {
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
             var data = {
-                "firstName": firstName,
-                "lastName": lastName
+                "name": name,
+                "email": email
             };
             document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
             return false;
@@ -18,6 +18,8 @@
  <body> 
     <h2>Report Of Ill Traveler</h2> 
     <form onsubmit="return outputJson()" id="jsonForm"> 
+        Name: <input type="text" id="name">
+        Email: <input type="text" id="email">
         First name:<br>
         <input type="text"id="firstName"><br> 
         Last name:<br> 
