@@ -9,6 +9,8 @@
             var firstName = document.getElementById('firstName').value;
             var lastName = document.getElementById('lastName').value;
             var dob = document.getElementById('dob').value;
+            var sex = document.getElementById('sex').value;
+            var phone = document.getElementById('phone').value;
             var data = {
                 "resourceType" : "Composition",
                 "id" : "ReportOfIllTravelerExample",
@@ -21,7 +23,10 @@
                 "email": email,
                 "firstName": firstName,
                 "lastName": lastName,
-                "dob": dob
+                "dob": dob,
+                "sex": sex,
+                "phone": phone
+
             };
             document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
             return false;
@@ -38,7 +43,14 @@
         First name:<br>  <input type="text" id="firstName"><br> 
         Last name:<br>  <input type="text" id="lastName"><br><br> 
         Date of Birth: <br>  <input type="date" id="dob" name="Date of Birth"  />
-        </section>
+        Sex: <br> 
+        <select name="sex" id="sex">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select><br>
+        Phone Number:<br>  <input type="text" id="phone"><br><br> 
+    </section>
 
        <section>
         <h2>Quarantine Station Info</h2>
@@ -46,27 +58,82 @@
         <select name="qstation-name" id="qstation-name">
             <option value="LAX">Los Angelos, CA</option>
             <option value="MIA">Miami, FL</option>
-        </select>
+        </select><br>
         Date of Transfer: <br> <input type="date" id="transferDate" name="Date of Transfer"  />
         </section>
        
         <section>
-            <h2>Flight Info</h2>
+            <h2>First Flight Info</h2>
             Departure Airport: <br>
             <select name="departure" id="departure">
                 <option value="LAX">Los Angelos, CA</option>
                 <option value="MIA">Miami, FL</option>
-            </select>
+            </select><br>
             Arrival Airport: <br>
             <select name="arrival" id="arrival">
                 <option value="LAX">Los Angelos, CA</option>
                 <option value="MIA">Miami, FL</option>
-            </select>
-            Hours in Air: <br> <input type="text" id="flightHours">
-            Date of Flight: <br> <input type="date" id="flightDate" name="Date of Flight"  />
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours"><br>
+            Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Date of Flight: <br> <input type="date" id="flightDate" name="Date of Flight"  /><br>
+                          
+        </section>
+        <section>
+            <h2>Second Flight Info</h2>
+            Departure Airport: <br>
+            <select name="departure2" id="departure2">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Arrival Airport: <br>
+            <select name="arrival2" id="arrival2">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours2"><br>
+            Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Date of Flight: <br> <input type="date" id="flightDate2" name="Date of Flight"  /><br>
                           
         </section>
        
+        <section>
+            <h2>Disease Info</h2>
+            Infectious Disease: <br>
+            <select name="Disease Name" id="diseaseName">
+                <option value="AN">Anthrax</option>
+                <option value="BO">Botulism</option>
+                <option value="CH">Cholera</option>
+                <option value="CO">Coronavirus</option>
+                <option value="DE">Denque</option>
+                <option value="EB">Ebola</option>
+                <option value="GO">Gonorrhea</option>
+                <option value="ME">Measles</option>
+                <option value="MA">Malaria</option>
+                <option value="MB">Marburg</option>
+                <option value="MD">Meningococcal disease</option>
+                <option value="MP">Mpox</option>
+                <option value="RA">Rabies</option>
+                <option value="RU">Rubella</option>
+                <option value="SM">Smallpox</option>
+                <option value="SY">Syphillis</option>
+                <option value="TB">Tuberculosis</option>
+                <option value="YF">Yellow Fever</option>
+                <option value="ZK">Zika</option>
+                <option value="WN">West Nile</option>
+            </select><br>
+            Symptoms: <br>
+            <select name="symptoms" id="symptoms">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours2"><br>
+            Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Date of Flight: <br> <input type="date" id="flightDate2" name="Date of Flight"  /><br>
+                          
+        </section>
+
+
         <input type="submit" value="Submit">
     </form>
      <p id="result">     </p> 
