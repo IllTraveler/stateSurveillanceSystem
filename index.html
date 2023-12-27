@@ -41,7 +41,7 @@
             var flightHours2 = document.getElementById('flightHours2').value;
             var seatNumber2 = document.getElementById('seatNumber2').value;
             var flightDate2 = document.getElementById('flightDate2').value;
-            var data = {
+            var data2 = {
                 "resourceType" : "Composition",
                 "id" : "ReportOfIllTravelerExample",
                 "meta" : {
@@ -60,7 +60,7 @@
                 "seatNumber2": seatNumber2,
                 "flightDate2": flightDate2
             };
-            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
+            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data2, null, 2);
             return false;
         }
     </script>
@@ -184,10 +184,10 @@
                           
         </section>
         <input type="submit" value="Submit">
+        <a href="/Report.html">Proceed to Report</a>
         </form>
     <p id="result">     </p> 
     <pre id="Reportoutput"></pre>
 
-     <a href="/Report.html"></a>
     </body> 
 </html>
