@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html>
+<script>    
+function submitForm() { 
+    // Get form values 
+    var firstName = document.getElementById('firstName').value; 
+    var lastName = document.getElementById('lastName').value; 
+    // Create JSON object 
+    var json = { "firstName": firstName, "lastName": lastName }; 
+    // Convert JSON object to string 
+    var jsonString = JSON.stringify(json); 
+    // Display JSON string in the paragraph 
+    document.getElementById('result').innerHTML = jsonString; }
+</script>
+ <body> 
+    <h2>JSON Export Form</h2> 
+    <form id="jsonForm"> First name:<br>
+        <inputtype="text"id="firstName"><br> Last name:<br> 
+        <inputtype="text"id="lastName"><br><br> 
+        <inputtype="button"value="Submit"onclick="submitForm()"> 
+    </form>
+     <pid="result">
+
+     </p> <scriptsrc="script.js"></script> 
+    </body> 
+</html>
