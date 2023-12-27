@@ -3,13 +3,12 @@
 <head>
     <title>Report Of Ill Traveler</title>
     <script>
-        function outputJson() {
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
+        function outputTravelerJson() {
             var firstName = document.getElementById('firstName').value;
             var lastName = document.getElementById('lastName').value;
             var dob = document.getElementById('dob').value;
             var sex = document.getElementById('sex').value;
+            var email = document.getElementById('email').value;
             var phone = document.getElementById('phone').value;
             var data = {
                 "resourceType" : "Composition",
@@ -19,23 +18,58 @@
                         "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
                         ]
                   },
-                "name": name,
-                "email": email,
                 "firstName": firstName,
                 "lastName": lastName,
                 "dob": dob,
                 "sex": sex,
-                "phone": phone
+                "phone": phone,
+                "email": email
+            
 
             };
-            document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
+            return false;
+        }
+        function outputReportJson() {
+            var departure = document.getElementById('departure').value;
+            var arrival = document.getElementById('arrival').value;
+            var flightHours = document.getElementById('flightHours').value;
+            var seatNumber = document.getElementById('seatNumber').value;
+            var flightDate = document.getElementById('flightDate').value;
+            var departure2 = document.getElementById('departure2').value;
+            var arrival2 = document.getElementById('arrival').value;
+            var flightHours2 = document.getElementById('flightHours2').value;
+            var seatNumber2 = document.getElementById('seatNumber2').value;
+            var flightDate2 = document.getElementById('flightDate2').value;
+            var data = {
+                "resourceType" : "Composition",
+                "id" : "ReportOfIllTravelerExample",
+                "meta" : {
+                    "profile" : [
+                        "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
+                        ]
+                  },
+                "departure": departure,
+                "arrival": arrival,
+                "flightHours": flightHours,
+                "seatNumber": seatNumber,
+                "flightDate": flightDate,
+                "departure2": departure2,
+                "arrival2": arrival2,
+                "flightHours2": flightHours2,
+                "seatNumber2": seatNumber2,
+                "flightDate2": flightDate2,
+           
+
+            };
+            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
             return false;
         }
     </script>
 </head>
  <body> 
     <h2>Report Of Ill Traveler</h2> 
-    <form onsubmit="return outputJson()" id="jsonForm"> 
+    <form onsubmit="return outputTravelerJson()" id="jsonForm"> 
         <section>
             <h2>Traveler Info</h2>
         Name: <input type="text" id="name">
@@ -51,7 +85,11 @@
         </select><br>
         Phone Number:<br>  <input type="text" id="phone"><br><br> 
     </section>
-
+    <input type="submit" value="Submit">
+</form>
+    <p id="result">     </p> 
+    <pre id="Traveleroutput"></pre>
+    <form onsubmit="return outputReportJson()" id="jsonForm"> 
        <section>
         <h2>Quarantine Station Info</h2>
         Q-Station: <br>
@@ -132,11 +170,11 @@
             Date of Flight: <br> <input type="date" id="flightDate2" name="Date of Flight"  /><br>
                           
         </section>
-
-
         <input type="submit" value="Submit">
-    </form>
-     <p id="result">     </p> 
-     <pre id="output"></pre>
+        </form>
+    <p id="result">     </p> 
+    <pre id="Reportoutput"></pre>
+
+       
     </body> 
 </html>

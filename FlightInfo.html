@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>Report Of Ill Traveler</title>
+    <script>
+        function outputJson() {
+            var departure = document.getElementById('departure').value;
+            var arrival = document.getElementById('arrival').value;
+            var flightHours = document.getElementById('flightHours').value;
+            var seatNumber = document.getElementById('seatNumber').value;
+            var flightDate = document.getElementById('flightDate').value;
+            var departure2 = document.getElementById('departure2').value;
+            var arrival2 = document.getElementById('arrival').value;
+            var flightHours2 = document.getElementById('flightHours2').value;
+            var seatNumber2 = document.getElementById('seatNumber2').value;
+            var flightDate2 = document.getElementById('flightDate2').value;
+            var data = {
+                "resourceType" : "Composition",
+                "id" : "ReportOfIllTravelerExample",
+                "meta" : {
+                    "profile" : [
+                        "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
+                        ]
+                  },
+                "departure": departure,
+                "arrival": arrival,
+                "flightHours": flightHours,
+                "seatNumber": seatNumber,
+                "flightDate": flightDate,
+                "departure2": departure2,
+                "arrival2": arrival2,
+                "flightHours2": flightHours2,
+                "seatNumber2": seatNumber2,
+                "flightDate2": flightDate2,
+           
+
+            };
+            document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+            return false;
+        }
+    </script>
+</head>
+ <body> 
+    <h2>Report Of Ill Traveler</h2> 
+    <form onsubmit="return outputJson()" id="jsonForm"> 
+        <section>
+            <h2>First Flight Info</h2>
+            Departure Airport: <br>
+            <select name="departure" id="departure">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Arrival Airport: <br>
+            <select name="arrival" id="arrival">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours"><br>
+            Seat #: <br> <input type="text" id="seatNumber"><br>
+            Date of Flight: <br> <input type="date" id="flightDate" name="Date of Flight"  /><br>
+                          
+        </section>
+        <section>
+            <h2>Second Flight Info</h2>
+            Departure Airport: <br>
+            <select name="departure2" id="departure2">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Arrival Airport: <br>
+            <select name="arrival2" id="arrival2">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours2"><br>
+            Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Date of Flight: <br> <input type="date" id="flightDate2" name="Date of Flight"  /><br>
+                          
+        </section>
+    <input type="submit" value="Submit">
+</form>
+    <p id="result">     </p> 
+    <pre id="output"></pre>
+
+      
+
+
+       
+    </body> 
+</html>
