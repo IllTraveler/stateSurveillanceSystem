@@ -5,8 +5,10 @@ function submitForm() {
     // Get form values 
     var firstName = document.getElementById('firstName').value; 
     var lastName = document.getElementById('lastName').value; 
+    var dob = document.getElementById('dob').value; 
+    var qstationName = document.getElementById('qstation-name').value; 
     // Create JSON object 
-    var json = { "firstName": firstName, "lastName": lastName }; 
+    var json = { "firstName": firstName, "lastName": lastName, "dob": dob, "qstation-name": qstationName }; 
     // Convert JSON object to string 
     var jsonString = JSON.stringify(json); 
     // Display JSON string in the paragraph 
@@ -15,9 +17,16 @@ function submitForm() {
  <body> 
     <h2>Report Of Ill Traveler</h2> 
     <form id="jsonForm"> First name:<br>
-        <inputtype="text"id="firstName"><br> Last name:<br> 
-        <inputtype="text"id="lastName"><br><br> 
-        <inputtype="button"value="Submit"onclick="submitForm()"> 
+        <input type="text"id="firstName"><br> Last name:<br> 
+        <input type="text"id="lastName"><br><br> 
+        <input type="date" id="dob" name="Date of Birth"  />
+
+        <select name="qstation-name" id="qstation-name">
+            <option value="LAX">Los Angelos, CA</option>
+            <option value="MIA">Miami, FL</option>
+            
+          </select>
+        <input type="button"value="Submit"onclick="submitForm()"> 
     </form>
      <pid="result">
 
