@@ -6,9 +6,11 @@
         function outputJson() {
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
+            var dob = document.getElementById('dob').value;
             var data = {
                 "name": name,
-                "email": email
+                "email": email,
+                "dob": dob
             };
             document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
             return false;
