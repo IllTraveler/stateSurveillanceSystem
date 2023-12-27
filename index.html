@@ -1,20 +1,38 @@
 <!DOCTYPE html> 
 <html>
+<head>
+    <title>Report Of Ill Traveler</title>
+    <script>
+        function outputJson() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var data = {
+                "name": name,
+                "email": email
+            };
+            document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+            return false;
+        }
+    </script>
+</head>
  <body> 
     <h2>Report Of Ill Traveler</h2> 
-    <form id="jsonForm"> First name:<br>
-        <input type="text"id="firstName"><br> Last name:<br> 
+    <form onsubmit="return outputJson()" id="jsonForm"> 
+        First name:<br>
+        <input type="text"id="firstName"><br> 
+        Last name:<br> 
         <input type="text"id="lastName"><br><br> 
+        Date: <br>
         <input type="date" id="dob" name="Date of Birth"  />
-
+        Q-Station: <br>
         <select name="qstation-name" id="qstation-name">
             <option value="LAX">Los Angelos, CA</option>
             <option value="MIA">Miami, FL</option>
             
           </select>
-        <input type="button"value="Submit"onclick="submitForm()"> 
+          <input type="submit" value="Submit">
     </form>
      <p id="result">     </p> 
-     <script src="script.js"></script> 
+     <pre id="output"></pre>
     </body> 
 </html>
