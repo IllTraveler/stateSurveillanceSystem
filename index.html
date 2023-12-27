@@ -4,11 +4,11 @@
     <title>Report Of Ill Traveler</title>
     <script>
         function outputJson() {
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
             var data = {
-                "name": name,
-                "email": email
+                "firstName": firstName,
+                "lastName": lastName
             };
             document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
             return false;
