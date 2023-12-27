@@ -6,10 +6,14 @@
         function outputJson() {
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
             var dob = document.getElementById('dob').value;
             var data = {
                 "name": name,
                 "email": email,
+                "firstName": firstName,
+                "lastName": lastName,
                 "dob": dob
             };
             document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
@@ -20,21 +24,52 @@
  <body> 
     <h2>Report Of Ill Traveler</h2> 
     <form onsubmit="return outputJson()" id="jsonForm"> 
+        <section>
+            <h2>Traveler Info</h2>
         Name: <input type="text" id="name">
         Email: <input type="text" id="email">
         First name:<br>
         <input type="text"id="firstName"><br> 
         Last name:<br> 
         <input type="text"id="lastName"><br><br> 
-        Date: <br>
+        Date of Birth: <br>
         <input type="date" id="dob" name="Date of Birth"  />
+        </section>
+
+       <section>
+        <h2>Quarantine Station Info</h2>
         Q-Station: <br>
         <select name="qstation-name" id="qstation-name">
             <option value="LAX">Los Angelos, CA</option>
             <option value="MIA">Miami, FL</option>
+        </select>
+        Date of Transfer: <br>
+        <input type="date" id="transferDate" name="Date of Transfer"  />
+        </section>
+       
+        <section>
+            <h2>Flight Info</h2>
+            Departure Airport: <br>
+            <select name="departure" id="departure">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select>
+            Arrival Airport: <br>
+            <select name="arrival" id="arrival">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select>
+            Hours in Air: <br>
+            <input type="text" id="name">
+            Date of Flight: <br>
+            <input type="date" id="flightDate" name="Date of Flight"  />
+                
+
+
             
-          </select>
-          <input type="submit" value="Submit">
+        </section>
+       
+        <input type="submit" value="Submit">
     </form>
      <p id="result">     </p> 
      <pre id="output"></pre>
