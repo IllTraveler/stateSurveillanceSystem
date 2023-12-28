@@ -3,12 +3,13 @@
 <head>
     <title>Report Of Ill Traveler</title>
     <script>
-       function outputReportJson() {
-            var departure = document.getElementById('departure').value;
-            var arrival = document.getElementById('arrival').value;
-            var flightHours = document.getElementById('flightHours').value;
-            var seatNumber = document.getElementById('seatNumber').value;
-            var flightDate = document.getElementById('flightDate').value;
+       function outputTravelerJson() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            var sex = document.getElementById('sex').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
             var data = {
                 "resourceType" : "Composition",
                 "id" : "ReportOfIllTravelerExample",
@@ -17,13 +18,16 @@
                         "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
                         ]
                   },
-                "departure": departure,
-                "arrival": arrival,
-                "flightHours": flightHours,
-                "seatNumber": seatNumber,
-                "flightDate": flightDate
+                "firstName": firstName,
+                "lastName": lastName,
+                "dob": dob,
+                "sex": sex,
+                "phone": phone,
+                "email": email
+            
+
             };
-            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
+            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
             return false;
         }
     </script>
@@ -31,11 +35,11 @@
 
  <body> 
     <h2>Report Of Ill Traveler</h2> 
-    <form onsubmit="return outputReportJson()" id="jsonForm"> 
+    <form onsubmit="return outputTravelerJson()" id="jsonForm"> 
        <section>
         <h2>Quarantine Station Info</h2>
         Q-Station: <br>
-        <select name="qstation-name" id="qstation-name">
+        <select name="firstName" id="firstName">
             <option value="LAX">Los Angelos, CA</option>
             <option value="MIA">Miami, FL</option>
         </select><br>
@@ -55,7 +59,13 @@
                 <option value="MIA">Miami, FL</option>
             </select><br>
             Hours in Air: <br> <input type="text" id="flightHours"><br>
-            Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Seat #: <br> <input type="text" id="seatNumber"><br>
+            Flight #: <br> <input type="text" id="flightNumber"><br>
+            Did they sit in their assigned seat?: <br>
+            <select name="sitInSeat" id="sitInSeat">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select><br>
             Date of Flight: <br> <input type="date" id="flightDate" name="Date of Flight"  /><br>
                           
         </section>
@@ -73,6 +83,12 @@
             </select><br>
             Hours in Air: <br> <input type="text" id="flightHours2"><br>
             Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Flight #: <br> <input type="text" id="flightNumber2"><br>
+            Did they sit in their assigned seat?: <br>
+            <select name="sitInSeat2" id="sitInSeat2">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select><br>
             Date of Flight: <br> <input type="date" id="flightDate2" name="Date of Flight"  /><br>
                           
         </section>
