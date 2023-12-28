@@ -27,7 +27,7 @@
             
 
             };
-            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
+            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
             return false;
         }
     </script>
@@ -36,10 +36,13 @@
  <body> 
     <h2>Report Of Ill Traveler</h2> 
     <form onsubmit="return outputTravelerJson()" id="jsonForm"> 
-       <section>
+     
+        <section>
         <h2>Quarantine Station Info</h2>
+        First name:<br>  <input type="text" id="firstName"><br> 
+        
         Q-Station: <br>
-        <select name="firstName" id="firstName">
+        <select name="qstation" id="qstation">
             <option value="LAX">Los Angelos, CA</option>
             <option value="MIA">Miami, FL</option>
         </select><br>
