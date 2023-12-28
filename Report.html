@@ -4,12 +4,7 @@
     <title>Report Of Ill Traveler</title>
     <script>
        function outputTravelerJson() {
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var dob = document.getElementById('dob').value;
-            var sex = document.getElementById('sex').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
+        var firstName = document.getElementById('firstName').value;
             var data = {
                 "resourceType" : "Composition",
                 "id" : "ReportOfIllTravelerExample",
@@ -18,16 +13,9 @@
                         "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
                         ]
                   },
-                "firstName": firstName,
-                "lastName": lastName,
-                "dob": dob,
-                "sex": sex,
-                "phone": phone,
-                "email": email
-            
-
+                "firstName": firstName
             };
-            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
+            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
             return false;
         }
     </script>
