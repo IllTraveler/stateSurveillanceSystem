@@ -30,39 +30,7 @@
             document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
             return false;
         }
-        function outputReportJson() {
-            var departure = document.getElementById('departure').value;
-            var arrival = document.getElementById('arrival').value;
-            var flightHours = document.getElementById('flightHours').value;
-            var seatNumber = document.getElementById('seatNumber').value;
-            var flightDate = document.getElementById('flightDate').value;
-            var departure2 = document.getElementById('departure2').value;
-            var arrival2 = document.getElementById('arrival').value;
-            var flightHours2 = document.getElementById('flightHours2').value;
-            var seatNumber2 = document.getElementById('seatNumber2').value;
-            var flightDate2 = document.getElementById('flightDate2').value;
-            var data2 = {
-                "resourceType" : "Composition",
-                "id" : "ReportOfIllTravelerExample",
-                "meta" : {
-                    "profile" : [
-                        "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
-                        ]
-                  },
-                "departure": departure,
-                "arrival": arrival,
-                "flightHours": flightHours,
-                "seatNumber": seatNumber,
-                "flightDate": flightDate,
-                "departure2": departure2,
-                "arrival2": arrival2,
-                "flightHours2": flightHours2,
-                "seatNumber2": seatNumber2,
-                "flightDate2": flightDate2
-            };
-            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data2, null, 2);
-            return false;
-        }
+        
     </script>
 </head>
  <body> 
@@ -184,7 +152,7 @@
                           
         </section>
         <input type="submit" value="Submit">
-        <a href="/Report.html">Proceed to Report</a>
+        <a href="stateSurveillanceSystem/Report.html">Proceed to Report</a>
         </form>
     <p id="result">     </p> 
     <pre id="Reportoutput"></pre>
