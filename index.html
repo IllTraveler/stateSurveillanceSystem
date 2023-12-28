@@ -90,6 +90,8 @@
             })
             .then((response) => response.json())
             .then((json) => console.log(json));
+            document.getElementById('travelerCreated').innerHTML = json;
+
         }
     </script>
 </head>
@@ -120,6 +122,6 @@
         <a href="Report.html">Proceed to Report</a>
     <p id="result">     </p> 
     <pre id="Reportoutput"></pre>
-
+    <pre id="travelerCreated"></pre>
     </body> 
 </html>
