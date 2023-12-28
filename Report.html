@@ -5,28 +5,97 @@
     <script>
        function outputTravelerJson() {
         var departure = document.getElementById('departure').value;
+        var departureText = document.getElementById('departure').textContent;
             var arrival = document.getElementById('arrival').value;
+            var arrivalText = document.getElementById('arrival').textContent;
             var flightHours = document.getElementById('flightHours').value;
             var seatNumber = document.getElementById('seatNumber').value;
             var flightDate = document.getElementById('flightDate').value;
             var sitInSeat = document.getElementById('sitInSeat').value;
             var flightNumber = document.getElementById('flightNumber').value;
-
             var data = {
                 "resourceType" : "Composition",
                 "id" : "ReportOfIllTravelerExample",
                 "meta" : {
                     "profile" : [
-                        "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTraveler"
+                        "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTravelerSimple"
                         ]
                   },
-                  "departure": departure,
-                "arrival": arrival,
-                "flightHours": flightHours,
-                "seatNumber": seatNumber,
-                "flightDate": flightDate,
-                "sitInSeat": sitInSeat,
-                "flightNumber": flightNumber
+                  "extension" : [
+                    {
+                    "extension" : [
+                        {
+                        "url" : "departureAirport",
+                        "valueCodeableConcept" : {
+                            "coding" : [
+                            {
+                                "code" : departure,
+                                "display" : departureText
+                            }
+                            ]
+                        }
+                        },
+                        {
+                        "url" : "arrivalAirport",
+                        "valueCodeableConcept" : {
+                            "coding" : [
+                            {
+                                "code" : arrival,
+                                "display" : arrivalText
+                            }
+                            ]
+                        }
+                        },
+                        {
+                        "url" : "flightNumber",
+                        "valueString" : flightNumber
+                        },
+                        {
+                        "url" : "seatNumber",
+                        "valueString" : seatNumber
+                        },
+                        {
+                        "url" : "flightDuration",
+                        "valueInteger" : flightHours
+                        },
+                        {
+                        "url" : "airline",
+                        "valueString" : "United"
+                        }
+                    ],
+                    "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/flight-details"
+                    },
+                    {
+                    "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/disease-name",
+                    "valueCodeableConcept" : {
+                        "coding" : [
+                        {
+                            "code" : "TB",
+                            "display" : "Tuberculosis"
+                        }
+                        ]
+                    }
+                    }
+                ],
+                "status" : "final",
+                "type" : {
+                    "coding" : [
+                    {
+                        "code" : "55751-2",
+                        "display" : "Public health Case report"
+                    }
+                    ]
+                },
+                "subject" : {
+                "reference" : "Patient/travelerExample"
+                },
+                "date" : "2023-12-03T19:43:30.000Z",
+                "author" : [
+                    {
+                    "reference" : "Organization/StateExample"
+                    }
+                ],
+                "title" : "Report of Ill Traveler"
 
             };
             document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
