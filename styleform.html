@@ -126,7 +126,7 @@
                     ]
             };
             document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
-            document.getElementById('Reportoutput').innerHTML = "<label>Traveler created, please proceed to completing the Ill Traveler Report <a href='Report.html'>Proceed to Report</a> </label>";
+            document.getElementById('Reportoutput').innerHTML = "Traveler created, please proceed to completing the Ill Traveler Report <a href='Report.html'>Proceed to Report</a> ";
             sendToCDC();
             return false;
         }
@@ -216,7 +216,7 @@
 </ul>
 </form>
 <p id="result">     </p> 
-<li><pre id="Reportoutput"></pre></li>
+<li><label id="Reportoutput"></label></li>
 <pre id="Traveleroutput"></pre>
     
         
