@@ -87,99 +87,106 @@
             color:red;
         }
         </style>
-     <script>
-        function outputTravelerJson() {
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var dob = document.getElementById('dob').value;
-            var sex = document.getElementById('sex').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var data = {
-                "resourceType" : "Patient",
-                "id" : "travelerExample",
-                "meta" : {
-                    "profile" : [
-                    "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/Traveler"
-                    ]
-                },
-                  "name" : [
-                        {
-                        "family" : lastName,
-                        "given" : [
-                        firstName
-                        ]
-                        }
-                    ],
-                "birthdate": dob,
-                "gender": sex,
-                "telecom" : [
-                        {
-                        "system" : "phone",
-                        "value" : phone,
-                        "use" : "home"
-                        },
-                        {
-                        "system" : "email",
-                        "value" : email
-                        }
-                    ]
-            };
-            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
-            document.getElementById('Reportoutput').innerHTML = "Traveler created, please proceed to completing the  <a href='Report.html'>Ill Traveler Report</a> ";
-            sendToCDC();
-            return false;
-        }
-        function sendToCDC(){
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var dob = document.getElementById('dob').value;
-            var sex = document.getElementById('sex').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var data = {
-                "resourceType" : "Patient",
-                "id" : "travelerExample",
-                "meta" : {
-                    "profile" : [
-                    "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/Traveler"
-                    ]
-                },
-                  "name" : [
-                        {
-                        "family" : lastName,
-                        "given" : [
-                        firstName
-                        ]
-                        }
-                    ],
-                "birthdate": dob,
-                "gender": sex,
-                "telecom" : [
-                        {
-                        "system" : "phone",
-                        "value" : phone,
-                        "use" : "home"
-                        },
-                        {
-                        "system" : "email",
-                        "value" : email
-                        }
-                    ],
-                };
-            fetch("https://api.logicahealth.org/AirCI/open/Patient", {
-                method: "POST",
-                body: JSON.stringify(data, null, 2),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-            .then((response) => response.json())
-            .then((json) => console.log(json))
-           // document.getElementById('travelerCreated').innerHTML = json;
+   <script>
+    function outputTravelerJson() {
+     var departure = document.getElementById('departure').value;
+     var departureText = document.getElementById('departure').textContent;
+         var arrival = document.getElementById('arrival').value;
+         var arrivalText = document.getElementById('arrival').textContent;
+         var flightHours = document.getElementById('flightHours').value;
+         var seatNumber = document.getElementById('seatNumber').value;
+         var flightDate = document.getElementById('flightDate').value;
+         var sitInSeat = document.getElementById('sitInSeat').value;
+         var flightNumber = document.getElementById('flightNumber').value;
+         var data = {
+             "resourceType" : "Composition",
+             "id" : "ReportOfIllTravelerExample",
+             "meta" : {
+                 "profile" : [
+                     "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTravelerSimple"
+                     ]
+               },
+               "extension" : [
+                 {
+                 "extension" : [
+                     {
+                     "url" : "departureAirport",
+                     "valueCodeableConcept" : {
+                         "coding" : [
+                         {
+                             "code" : departure,
+                             "display" : departureText
+                         }
+                         ]
+                     }
+                     },
+                     {
+                     "url" : "arrivalAirport",
+                     "valueCodeableConcept" : {
+                         "coding" : [
+                         {
+                             "code" : arrival,
+                             "display" : arrivalText
+                         }
+                         ]
+                     }
+                     },
+                     {
+                     "url" : "flightNumber",
+                     "valueString" : flightNumber
+                     },
+                     {
+                     "url" : "seatNumber",
+                     "valueString" : seatNumber
+                     },
+                     {
+                     "url" : "flightDuration",
+                     "valueInteger" : flightHours
+                     },
+                     {
+                     "url" : "airline",
+                     "valueString" : "United"
+                     }
+                 ],
+                 "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/flight-details"
+                 },
+                 {
+                 "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/disease-name",
+                 "valueCodeableConcept" : {
+                     "coding" : [
+                     {
+                         "code" : "TB",
+                         "display" : "Tuberculosis"
+                     }
+                     ]
+                 }
+                 }
+             ],
+             "status" : "final",
+             "type" : {
+                 "coding" : [
+                 {
+                     "code" : "55751-2",
+                     "display" : "Public health Case report"
+                 }
+                 ]
+             },
+             "subject" : {
+             "reference" : "Patient/travelerExample"
+             },
+             "date" : "2023-12-03T19:43:30.000Z",
+             "author" : [
+                 {
+                 "reference" : "Organization/StateExample"
+                 }
+             ],
+             "title" : "Report of Ill Traveler"
 
-        }
-    </script>
+         };
+         document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
+         return false;
+     }
+ </script>
 </head>
 <body>
 <form onsubmit="return outputTravelerJson()" id="jsonForm">
@@ -197,12 +204,28 @@
         <input type="date" id="dob" name="Date of Birth" class="field-long" />
     </li>
     <li>
-        <label>Gender</label>
-        <select name="sex" id="sex" class="field-select">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-            <option value="unknown">Unknown</option>
+        <label>Quarantine Station Traveler was transfered to</label>
+        <select name="qstation" id="qstation" class="field-select">
+            <option value="Anchorage">Anchorage</option>
+            <option value="Atlanta">Atlanta</option>
+            <option value="Boston">Boston</option>
+            <option value="Chicago">Chicago</option>
+            <option value="Dallas">Dallas</option>
+            <option value="Detroit">Detroit</option>
+            <option value="ElPaso">El Paso</option>
+            <option value="Honolulu">Honolulu</option>
+            <option value="Houston">Houston</option>
+            <option value="LosAngeles">Los Angeles</option>
+            <option value="Miami">Miami</option>
+            <option value="Minneapolis">Minneapolis</option>
+            <option value="NewYork">New York</option>
+            <option value="Newark">Newark</option>
+            <option value="Philadelphia">Philadelphia</option>
+            <option value="SanDiego">San Diego</option>
+            <option value="SanFrancisco">San Francisco</option>
+            <option value="SanJuan">San Juan</option>
+            <option value="Seattle">Seattle</option>
+            <option value="Washington">Washington, DC</option>
         </select>
     </li>
     Phone Number:<br>  <input type="text" id="phone"><br><br>
