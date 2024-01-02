@@ -126,7 +126,6 @@
                     ]
             };
             document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
-            document.getElementById('Reportoutput').innerHTML = response.body;
             
             document.getElementById('nextStep').innerHTML = "Traveler created, please proceed to completing the  <a href='Report.html'>Ill Traveler Report</a> ";
             sendToCDC();
@@ -178,6 +177,8 @@
             })
             .then((response) => response.json())
             .then((json) => console.log(json))
+            document.getElementById('Reportoutput').innerHTML = response.body;
+
            // document.getElementById('travelerCreated').innerHTML = json;
 
         }
