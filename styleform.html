@@ -189,9 +189,11 @@
             return false;
      }
      function sendToCDC(){
-        var departure = document.getElementById('departure').value;
-        var departureText = document.getElementById('departure').text;
-     
+        //var departure = document.getElementById('departure').value;
+        //var departureText = document.getElementById('departure').text;
+        var e = document.getElementById("departure");
+        var departure = e.options[e.selectedIndex].value;
+        var departureText = e.options[e.selectedIndex].text;
          var arrival = document.getElementById('arrival').value;
          var arrivalText = document.getElementById('arrival').textContent;
          var flightHours = document.getElementById('flightHours').value;
