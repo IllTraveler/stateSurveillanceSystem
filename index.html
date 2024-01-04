@@ -177,9 +177,8 @@
                 }
             })
             .then((response) => response.json())
-            .then((json) => console.log(json))
-            .then(res => res.json())
-            .then(data => z = data)
+            .then((json) => z)
+            
             //document.getElementById('Reportoutput').innerHTML = response.body;
             document.getElementById('response').innerHTML = z;
 
