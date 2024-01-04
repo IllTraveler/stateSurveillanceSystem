@@ -200,8 +200,9 @@
         <input type="email" id="email" name="email" class="field-long" />
     </li>
     <li>
-        <label>Date of Birth </label>
-        <input type="date" id="dob" name="Date of Birth" class="field-long" />
+        <label>Date of Transfer: </label>
+        <input type="date" id="transferDate" name="Date of Transfer" class="field-long" />
+         <br>  
     </li>
     <li>
         <label>Quarantine Station Traveler was transfered to</label>
@@ -228,7 +229,29 @@
             <option value="Washington">Washington, DC</option>
         </select>
     </li>
-    Phone Number:<br>  <input type="text" id="phone"><br><br>
+    <section>
+        <h2>First Flight Info</h2>
+        Departure Airport: <br>
+        <select name="departure" id="departure">
+            <option value="LAX">Los Angelos, CA</option>
+            <option value="MIA">Miami, FL</option>
+        </select><br>
+        Arrival Airport: <br>
+        <select name="arrival" id="arrival">
+            <option value="LAX">Los Angelos, CA</option>
+            <option value="MIA">Miami, FL</option>
+        </select><br>
+        Hours in Air: <br> <input type="text" id="flightHours"><br>
+        Seat #: <br> <input type="text" id="seatNumber"><br>
+        Flight #: <br> <input type="text" id="flightNumber"><br>
+        Did they sit in their assigned seat?: <br>
+        <select name="sitInSeat" id="sitInSeat">
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+        </select><br>
+        Date of Flight: <br> <input type="date" id="flightDate" name="Date of Flight"  /><br>
+                      
+    </section>
     <li>
         <label>Notes </label>
         <textarea name="notes" id="notes" class="field-long field-textarea"></textarea>
