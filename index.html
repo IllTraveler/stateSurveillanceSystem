@@ -132,6 +132,7 @@
             return false;
         }
         function sendToCDC(){
+            var z;
             var firstName = document.getElementById('firstName').value;
             var lastName = document.getElementById('lastName').value;
             var dob = document.getElementById('dob').value;
@@ -177,8 +178,10 @@
             })
             .then((response) => response.json())
             .then((json) => console.log(json))
+            .then(res => res.json())
+            .then(data => z = data)
             //document.getElementById('Reportoutput').innerHTML = response.body;
-            document.getElementById('response').innerHTML = json;
+            document.getElementById('response').innerHTML = z;
 
            // document.getElementById('travelerCreated').innerHTML = json;
 
