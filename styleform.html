@@ -194,8 +194,10 @@
         var e = document.getElementById("departure");
         var departure = e.options[e.selectedIndex].value;
         var departureText = e.options[e.selectedIndex].text;
-         var arrival = document.getElementById('arrival').value;
-         var arrivalText = document.getElementById('arrival').textContent;
+        var f = document.getElementById("arrival");
+        var arrival = f.options[f.selectedIndex].value;
+        var arrivalText = f.options[f.selectedIndex].text;
+         
          var flightHours = document.getElementById('flightHours').value;
          var seatNumber = document.getElementById('seatNumber').value;
          var flightDate = document.getElementById('flightDate').value;
