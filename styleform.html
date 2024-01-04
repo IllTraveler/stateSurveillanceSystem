@@ -189,12 +189,15 @@
             return false;
      }
      function sendToCDC(){
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var dob = document.getElementById('dob').value;
-            var sex = document.getElementById('sex').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
+        var departure = document.getElementById('departure').value;
+     var departureText = document.getElementById('departure').textContent;
+         var arrival = document.getElementById('arrival').value;
+         var arrivalText = document.getElementById('arrival').textContent;
+         var flightHours = document.getElementById('flightHours').value;
+         var seatNumber = document.getElementById('seatNumber').value;
+         var flightDate = document.getElementById('flightDate').value;
+         var sitInSeat = document.getElementById('sitInSeat').value;
+         var flightNumber = document.getElementById('flightNumber').value;
             var data = {
              "resourceType" : "Composition",
              "id" : "ReportOfIllTravelerExample",
@@ -290,7 +293,7 @@
             .then((response) => response.json())
             .then((json) => console.log(json))
             //document.getElementById('Reportoutput').innerHTML = response.body;
-            document.getElementById('jsonOutput').innerHTML = json;
+          //  document.getElementById('jsonOutput').innerHTML = json;
 
            // document.getElementById('travelerCreated').innerHTML = json;
 
