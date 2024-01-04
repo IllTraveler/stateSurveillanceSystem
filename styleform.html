@@ -290,7 +290,7 @@
             .then((response) => response.json())
             .then((json) => console.log(json))
             //document.getElementById('Reportoutput').innerHTML = response.body;
-            document.getElementById('response').innerHTML = json;
+            document.getElementById('jsonOutput').innerHTML = json;
 
            // document.getElementById('travelerCreated').innerHTML = json;
 
@@ -370,6 +370,7 @@
 </form>
 <p id="result">     </p> 
 <li><label id="Reportoutput"></label></li>
+<li><label id="jsonOutput"></label></li>
 <pre id="Traveleroutput"></pre>
     
         
