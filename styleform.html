@@ -89,15 +89,23 @@
         </style>
    <script>
     function outputTravelerJson() {
-     var departure = document.getElementById('departure').value;
-     var departureText = document.getElementById('departure').textContent;
-         var arrival = document.getElementById('arrival').value;
-         var arrivalText = document.getElementById('arrival').textContent;
+        var e = document.getElementById("departure");
+        var departure = e.options[e.selectedIndex].value;
+        var departureText = e.options[e.selectedIndex].text;
+        var f = document.getElementById("arrival");
+        var arrival = f.options[f.selectedIndex].value;
+        var arrivalText = f.options[f.selectedIndex].text;
          var flightHours = document.getElementById('flightHours').value;
          var seatNumber = document.getElementById('seatNumber').value;
          var flightDate = document.getElementById('flightDate').value;
          var sitInSeat = document.getElementById('sitInSeat').value;
          var flightNumber = document.getElementById('flightNumber').value;
+         var g = document.getElementById("diseaseName");
+         var diseaseName = g.options[e.selectedIndex].value;
+         var diseaseText = g.options[e.selectedIndex].text;
+         var h = document.getElementById("sym1");
+         var sym1Name = g.options[h.selectedIndex].value;
+         var sym1Text = g.options[h.selectedIndex].text;
          var data = {
              "resourceType" : "Composition",
              "id" : "ReportOfIllTravelerExample",
@@ -146,6 +154,27 @@
                      {
                      "url" : "airline",
                      "valueString" : "United"
+                     },
+                     {
+                     "url" : "infectious-disease-name",
+                     "valueCodeableConcept" : {
+                         "coding" : [
+                         {
+                             "code" : diseaseName,
+                             "display" : diseaseText
+                         }
+                         ]
+                     }
+                     },{
+                     "url" : "symptoms",
+                     "valueCodeableConcept" : {
+                         "coding" : [
+                         {
+                             "code" : sym1Name,
+                             "display" : sym1Name
+                         }
+                         ]
+                     }
                      }
                  ],
                  "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/flight-details"
@@ -471,6 +500,63 @@
         <label>Notes </label>
         <textarea name="notes" id="notes" class="field-long field-textarea"></textarea>
     </li>
+    <section>
+        <h2>Disease Info</h2>
+        Infectious Disease: <br>
+        <select name="Disease Name" id="diseaseName">
+            <option value="AN">Anthrax</option>
+            <option value="BO">Botulism</option>
+            <option value="CH">Cholera</option>
+            <option value="CO">Coronavirus</option>
+            <option value="DE">Dengue</option>
+            <option value="EB">Ebola</option>
+            <option value="GO">Gonorrhea</option>
+            <option value="ME">Measles</option>
+            <option value="MA">Malaria</option>
+            <option value="MB">Marburg</option>
+            <option value="MD">Meningococcal disease</option>
+            <option value="MP">Mpox</option>
+            <option value="RA">Rabies</option>
+            <option value="RU">Rubella</option>
+            <option value="SM">Smallpox</option>
+            <option value="SY">Syphillis</option>
+            <option value="TB">Tuberculosis</option>
+            <option value="YF">Yellow Fever</option>
+            <option value="ZK">Zika</option>
+            <option value="WN">West Nile</option>
+        </select><br>
+        Symptoms: <br>
+        <select name="symptom1" id="sym1">
+            <option value='21522001'>Abdominal pain (finding)</option>
+            <option value='419284004'>Altered mental status (finding)</option>
+            <option value='29857009'>Chest pain (finding)</option>
+            <option value='43724002'>Chill (finding)</option>
+            <option value='40917007'>Clouded consciousness (finding)</option>
+            <option value='49727002'>Cough (finding)</option>
+            <option value='3415004'>Cyanosis (finding)</option>
+            <option value='62315008'>Diarrhea (finding)</option>
+            <option value='230145002'>Difficulty breathing (finding)</option>
+            <option value='271782001'>Drowsy (finding)</option>
+            <option value='267036007'>Dyspnea (finding)</option>
+            <option value='84229001'>Fatigue (finding)</option>
+            <option value='103001002'>Feeling feverish (finding)</option>
+            <option value='426000000'>Fever greater than 100.4 Fahrenheit (finding)</option>
+            <option value='300359004'>Finding of vomiting</option>
+            <option value='25064002'>Headache (finding)</option>
+            <option value='77692006'>Hypersomnia (disorder)</option>
+            <option value='44169009'>Loss of sense of smell (finding)</option>
+            <option value='36955009'>Loss of taste (finding)</option>
+            <option value='68962001'>Muscle pain (finding)</option>
+            <option value='64531003'>Nasal discharge (finding)</option>
+            <option value='422587007'>Nausea (finding)</option>
+            <option value='OTH'>other</option>
+            <option value='162397003'>Pain in throat (finding)</option>
+            <option value='38880002'>Rigor (finding)</option>
+            <option value='23924001'>Tight chest (finding)</option>
+            <option value='UNK'>Unknown</option>
+            <option value='56018004'>Wheezing (finding)</option>
+        </select><br>
+    </section>
     <li>
         <input type="submit" value="Submit" />
     </li>
