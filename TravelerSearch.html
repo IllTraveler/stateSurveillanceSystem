@@ -94,11 +94,7 @@
                         
             document.getElementById('Traveleroutput').innerHTML = s;
             fetch(s, {
-                method: "GET",
-                body: JSON.stringify(data, null, 2),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
+                method: "GET"
             })
             .then(res => {
                 return res.json();
