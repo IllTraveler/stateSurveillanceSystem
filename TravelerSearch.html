@@ -101,7 +101,7 @@
             })
             .then(data => {
                 data.forEach(patient =>{
-                    const markup = '<li>${user.name}</li>'
+                    const markup = '<li>${patient.name}</li>'
                     document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
                 });
             })
