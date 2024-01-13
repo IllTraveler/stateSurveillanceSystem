@@ -130,7 +130,7 @@
             };
             document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
             
-            document.getElementById('nextStep').innerHTML = "Traveler created, please proceed to completing the  <a href='Report.html'>Ill Traveler Report</a> ";
+            document.getElementById('nextStep').innerHTML = "Report of Ill Traveler successfully created. Please contact CDC if you do not receive a response.";
             sendToCDC();
             return false;
         }
@@ -174,7 +174,7 @@
                                 }
                             ]
                      };
-                };
+                
             fetch("https://api.logicahealth.org/AirCI/open/Person", {
                 method: "POST",
                 body: JSON.stringify(data, null, 2),
