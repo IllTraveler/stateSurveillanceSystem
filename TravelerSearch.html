@@ -101,10 +101,14 @@
             })
             .then(data => {
                 console.log(data);
-                data.forEach(patient =>{
-                    const markup = '<li>${patient.name}</li>'
-                    document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-                });
+                data = JSON.parse(data);
+                console.log(data);
+                data.forEach(function(element){
+                    console.log(element);
+                //data.forEach(patient =>{
+                //    const markup = '<li>${patient.name}</li>'
+                //    document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+                //});
             })
             .catch(error => console.log(error));
             return false;
