@@ -1,0 +1,231 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>Report Of Ill Traveler</title>
+    <style type="text/css">
+        .form-style-1 {
+            margin:10px auto;
+            max-width: 400px;
+            padding: 20px 12px 10px 20px;
+            font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        }
+        .form-style-1 li {
+            padding: 0;
+            display: block;
+            list-style: none;
+            margin: 10px 0 0 0;
+        }
+        .form-style-1 label{
+            margin:0 0 3px 0;
+            padding:0px;
+            display:block;
+            font-weight: bold;
+        }
+        .form-style-1 input[type=text], 
+        .form-style-1 input[type=date],
+        .form-style-1 input[type=datetime],
+        .form-style-1 input[type=number],
+        .form-style-1 input[type=search],
+        .form-style-1 input[type=time],
+        .form-style-1 input[type=url],
+        .form-style-1 input[type=email],
+        textarea, 
+        select{
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            border:1px solid #BEBEBE;
+            padding: 7px;
+            margin:0px;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            outline: none;	
+        }
+        .form-style-1 input[type=text]:focus, 
+        .form-style-1 input[type=date]:focus,
+        .form-style-1 input[type=datetime]:focus,
+        .form-style-1 input[type=number]:focus,
+        .form-style-1 input[type=search]:focus,
+        .form-style-1 input[type=time]:focus,
+        .form-style-1 input[type=url]:focus,
+        .form-style-1 input[type=email]:focus,
+        .form-style-1 textarea:focus, 
+        .form-style-1 select:focus{
+            -moz-box-shadow: 0 0 8px #88D5E9;
+            -webkit-box-shadow: 0 0 8px #88D5E9;
+            box-shadow: 0 0 8px #88D5E9;
+            border: 1px solid #88D5E9;
+        }
+        .form-style-1 .field-divided{
+            width: 49%;
+        }
+        
+        .form-style-1 .field-long{
+            width: 100%;
+        }
+        .form-style-1 .field-select{
+            width: 100%;
+        }
+        .form-style-1 .field-textarea{
+            height: 100px;
+        }
+        .form-style-1 input[type=submit], .form-style-1 input[type=button]{
+            background: #4B99AD;
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+        }
+        .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+            background: #4691A4;
+            box-shadow:none;
+            -moz-box-shadow:none;
+            -webkit-box-shadow:none;
+        }
+        .form-style-1 .required{
+            color:red;
+        }
+        </style>
+     <script>
+        function outputTravelerJson() {
+            var g = document.getElementById("diseaseName");
+         var diseaseName = g.options[e.selectedIndex].value;
+         var diseaseText = g.options[e.selectedIndex].text;
+            var data = {
+                "resourceType" : "Person",
+                "id" : "travelerExample",
+                "meta" : {
+                    "profile" : [
+                    "http://hl7.org/fhir/StructureDefinition/Person"
+                    ]
+                },
+                  "name" : [
+                        {
+                        "family" : lastName,
+                        "given" : [
+                        firstName
+                        ]
+                        }
+                    ],
+                "birthdate": dob,
+                "gender": sex,
+                "telecom" : [
+                        {
+                        "system" : "phone",
+                        "value" : phone,
+                        "use" : "home"
+                        },
+                        {
+                        "system" : "email",
+                        "value" : email
+                        }
+                    ]
+            };
+            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
+            
+            document.getElementById('nextStep').innerHTML = "Traveler created, please proceed to completing the  <a href='Report.html'>Ill Traveler Report</a> ";
+            sendToCDC();
+            return false;
+        }
+        function sendToCDC(){
+            var z;
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            var sex = document.getElementById('sex').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var data = {
+                "resourceType" : "Patient",
+                "id" : "travelerExample",
+                "meta" : {
+                    "profile" : [
+                    "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/Traveler"
+                    ]
+                },
+                  "name" : [
+                        {
+                        "family" : lastName,
+                        "given" : [
+                        firstName
+                        ]
+                        }
+                    ],
+                "birthdate": dob,
+                "gender": sex,
+                "telecom" : [
+                        {
+                        "system" : "phone",
+                        "value" : phone,
+                        "use" : "home"
+                        },
+                        {
+                        "system" : "email",
+                        "value" : email
+                        }
+                    ],
+                };
+            fetch("https://api.logicahealth.org/AirCI/open/Patient", {
+                method: "POST",
+                body: JSON.stringify(data, null, 2),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            
+            //document.getElementById('Reportoutput').innerHTML = response.body;
+            //document.getElementById('APIoutput').innerHTML = z;
+
+           // document.getElementById('travelerCreated').innerHTML = json;
+
+        }
+    </script>
+</head>
+<body>
+<form onsubmit="return outputTravelerJson()" id="jsonForm">
+    <ul class="form-style-1">
+        <li>
+        <label>Report of Ill Traveler</label>
+        </li>
+        <h2>Search By Disease</h2>
+        Infectious Disease Name: <br>
+        <select name="Disease Name" id="diseaseName">
+            <option value="AN">Anthrax</option>
+            <option value="BO">Botulism</option>
+            <option value="CH">Cholera</option>
+            <option value="CO">Coronavirus</option>
+            <option value="DE">Dengue</option>
+            <option value="EB">Ebola</option>
+            <option value="GO">Gonorrhea</option>
+            <option value="ME">Measles</option>
+            <option value="MA">Malaria</option>
+            <option value="MB">Marburg</option>
+            <option value="MD">Meningococcal disease</option>
+            <option value="MP">Mpox</option>
+            <option value="RA">Rabies</option>
+            <option value="RU">Rubella</option>
+            <option value="SM">Smallpox</option>
+            <option value="SY">Syphillis</option>
+            <option value="TB">Tuberculosis</option>
+            <option value="YF">Yellow Fever</option>
+            <option value="ZK">Zika</option>
+            <option value="WN">West Nile</option>
+        </select><br>
+        <li>
+            <input type="submit" value="Submit" />
+        </li>
+    </ul>
+    </form>
+    <p id="result">     </p> 
+    <li><label id="Reportoutput"></label></li>
+    <pre id="Traveleroutput"></pre>
+    <pre id="APIoutput"></pre>
+        
+            
+        <p id="result">     </p> 
+        <pre id="travelerCreated"></pre>
+    </body>
+</html>
