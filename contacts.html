@@ -89,41 +89,41 @@
         </style>
      <script>
         function outputTravelerJson() {
-            var SCfirstName = document.getElementById('SCfirstName').value;
+        var SCfirstName = document.getElementById('SCfirstName').value;
          var SClastName = document.getElementById('SClastName').value;
          var SCemail = document.getElementById('SCemail').value;
+         var SCphone = document.getElementById('SCphone').value;
          var LCfirstName = document.getElementById('LCfirstName').value;
          var LClastName = document.getElementById('LClastName').value;
          var LCemail = document.getElementById('LCemail').value;
          var DCfirstName = document.getElementById('DCfirstName').value;
          var DClastName = document.getElementById('DClastName').value;
          var DCemail = document.getElementById('DCemail').value;
+            
             var data = {
                 "resourceType" : "Person",
                 "id" : "travelerExample",
                 "meta" : {
                     "profile" : [
-                    "http://hl7.org/fhir/StructureDefinition/Person"
+                    "http://hl7.org/fhir/us/StructureDefinition/Person"
                     ]
                 },
                   "name" : [
                         {
-                        "family" : lastName,
+                        "family" : SClastName,
                         "given" : [
-                        firstName
+                        SCfirstName
                         ]
                         }
                     ],
-                "birthdate": dob,
-                "gender": sex,
                 "telecom" : [
                         {
-                        "system" : "phone",
+                        "system" : "SCphone",
                         "value" : phone,
                         "use" : "home"
                         },
                         {
-                        "system" : "email",
+                        "system" : "SCemail",
                         "value" : email
                         }
                     ]
@@ -135,44 +135,47 @@
             return false;
         }
         function sendToCDC(){
-            var z;
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var dob = document.getElementById('dob').value;
-            var sex = document.getElementById('sex').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var data = {
-                "resourceType" : "Patient",
-                "id" : "travelerExample",
-                "meta" : {
-                    "profile" : [
-                    "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/Traveler"
-                    ]
-                },
-                  "name" : [
-                        {
-                        "family" : lastName,
-                        "given" : [
-                        firstName
-                        ]
-                        }
-                    ],
-                "birthdate": dob,
-                "gender": sex,
-                "telecom" : [
-                        {
-                        "system" : "phone",
-                        "value" : phone,
-                        "use" : "home"
+                var SCfirstName = document.getElementById('SCfirstName').value;
+                var SClastName = document.getElementById('SClastName').value;
+                var SCemail = document.getElementById('SCemail').value;
+                var SCphone = document.getElementById('SCphone').value;
+                var LCfirstName = document.getElementById('LCfirstName').value;
+                var LClastName = document.getElementById('LClastName').value;
+                var LCemail = document.getElementById('LCemail').value;
+                var DCfirstName = document.getElementById('DCfirstName').value;
+                var DClastName = document.getElementById('DClastName').value;
+                var DCemail = document.getElementById('DCemail').value;
+                    
+                    var data = {
+                        "resourceType" : "Person",
+                        "id" : "travelerExample",
+                        "meta" : {
+                            "profile" : [
+                            "http://hl7.org/fhir/us/StructureDefinition/Person"
+                            ]
                         },
-                        {
-                        "system" : "email",
-                        "value" : email
-                        }
-                    ],
+                        "name" : [
+                                {
+                                "family" : SClastName,
+                                "given" : [
+                                SCfirstName
+                                ]
+                                }
+                            ],
+                        "telecom" : [
+                                {
+                                "system" : "SCphone",
+                                "value" : phone,
+                                "use" : "home"
+                                },
+                                {
+                                "system" : "SCemail",
+                                "value" : email
+                                }
+                            ]
+                     };
                 };
-            fetch("https://api.logicahealth.org/AirCI/open/Patient", {
+            fetch("https://api.logicahealth.org/AirCI/open/Person", {
                 method: "POST",
                 body: JSON.stringify(data, null, 2),
                 headers: {
@@ -197,40 +200,40 @@
         <label>Report of Ill Traveler</label>
         </li>
         <li>
-            <label label id="nextStep">Traveler Information</label>
+            <label label id="nextStep">Juristiction Contact Information</label>
         </li>
-        <li>
-            <label label id="APIresponse">Response:</label>
-        </li>
-        <li><label>Full Name <span class="required">*</span></label>
-            <input type="text" name="field1" class="field-divided" id="firstName" placeholder="First" /> 
-            <input type="text" name="field2" class="field-divided" id="lastName" placeholder="Last" />
-        </li>
-        <li>
-            <label>Email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" class="field-long" />
-        </li>
-        <li>
-            <label>Date of Birth </label>
-            <input type="date" id="dob" name="Date of Birth" class="field-long" />
-        </li>
-        <li>
-            <label>Gender</label>
-            <select name="sex" id="sex" class="field-select">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-                <option value="unknown">Unknown</option>
-            </select>
-        </li>
-        Phone Number:<br>  <input type="text" id="phone"><br><br>
-        <li>
-            <label>Notes </label>
-            <textarea name="notes" id="notes" class="field-long field-textarea"></textarea>
-        </li>
-        <li>
-            <input type="submit" value="Submit" />
-        </li>
+        <section>
+            <li><label>State Contact Full Name <span class="required">*</span></label>
+                <input type="text" name="field1" class="field-divided" id="SCfirstName" placeholder="First" /> 
+                <input type="text" name="field2" class="field-divided" id="SClastName" placeholder="Last" />
+            </li>
+            <li>
+                <label>Email <span class="required">*</span></label>
+                <input type="email" id="SCemail" name="email" class="field-long" />
+            </li>
+            <li>
+                Phone Number:<br>  <input type="text" id="SCphone"><br><br>
+            </li>
+            <li><label>Local Contact Full Name <span class="required">*</span></label>
+                <input type="text" name="field1" class="field-divided" id="LCfirstName" placeholder="First" /> 
+                <input type="text" name="field2" class="field-divided" id="LClastName" placeholder="Last" />
+            </li>
+            <li>
+                <label>Email <span class="required">*</span></label>
+                <input type="email" id="LCemail" name="email" class="field-long" />
+            </li>
+            <li><label>Disease Contact Full Name <span class="required">*</span></label>
+                <input type="text" name="field1" class="field-divided" id="DCfirstName" placeholder="First" /> 
+                <input type="text" name="field2" class="field-divided" id="DClastName" placeholder="Last" />
+            </li>
+            <li>
+                <label>Email <span class="required">*</span></label>
+                <input type="email" id="DCemail" name="email" class="field-long" />
+            </li>
+    
+    
+        </section>
+       
     </ul>
     </form>
     <p id="result">     </p> 

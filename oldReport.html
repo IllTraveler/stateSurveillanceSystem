@@ -1,0 +1,225 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>Report Of Ill Traveler</title>
+    <script>
+       function outputTravelerJson() {
+        var departure = document.getElementById('departure').value;
+        var departureText = document.getElementById('departure').textContent;
+            var arrival = document.getElementById('arrival').value;
+            var arrivalText = document.getElementById('arrival').textContent;
+            var flightHours = document.getElementById('flightHours').value;
+            var seatNumber = document.getElementById('seatNumber').value;
+            var flightDate = document.getElementById('flightDate').value;
+            var sitInSeat = document.getElementById('sitInSeat').value;
+            var flightNumber = document.getElementById('flightNumber').value;
+            var data = {
+                "resourceType" : "Composition",
+                "id" : "ReportOfIllTravelerExample",
+                "meta" : {
+                    "profile" : [
+                        "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/ReportOfIllTravelerSimple"
+                        ]
+                  },
+                  "extension" : [
+                    {
+                    "extension" : [
+                        {
+                        "url" : "departureAirport",
+                        "valueCodeableConcept" : {
+                            "coding" : [
+                            {
+                                "code" : departure,
+                                "display" : departureText
+                            }
+                            ]
+                        }
+                        },
+                        {
+                        "url" : "arrivalAirport",
+                        "valueCodeableConcept" : {
+                            "coding" : [
+                            {
+                                "code" : arrival,
+                                "display" : arrivalText
+                            }
+                            ]
+                        }
+                        },
+                        {
+                        "url" : "flightNumber",
+                        "valueString" : flightNumber
+                        },
+                        {
+                        "url" : "seatNumber",
+                        "valueString" : seatNumber
+                        },
+                        {
+                        "url" : "flightDuration",
+                        "valueInteger" : flightHours
+                        },
+                        {
+                        "url" : "airline",
+                        "valueString" : "United"
+                        }
+                    ],
+                    "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/flight-details"
+                    },
+                    {
+                    "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/disease-name",
+                    "valueCodeableConcept" : {
+                        "coding" : [
+                        {
+                            "code" : "TB",
+                            "display" : "Tuberculosis"
+                        }
+                        ]
+                    }
+                    }
+                ],
+                "status" : "final",
+                "type" : {
+                    "coding" : [
+                    {
+                        "code" : "55751-2",
+                        "display" : "Public health Case report"
+                    }
+                    ]
+                },
+                "subject" : {
+                "reference" : "Patient/travelerExample"
+                },
+                "date" : "2023-12-03T19:43:30.000Z",
+                "author" : [
+                    {
+                    "reference" : "Organization/StateExample"
+                    }
+                ],
+                "title" : "Report of Ill Traveler"
+
+            };
+            document.getElementById('Reportoutput').innerHTML = JSON.stringify(data, null, 2);
+            return false;
+        }
+    </script>
+</head>
+
+ <body> 
+    <h2>Report Of Ill Traveler</h2> 
+    <form onsubmit="return outputTravelerJson()" id="jsonForm"> 
+     
+        <section>
+        <h2>Quarantine Station Info</h2>
+        Q-Station: <br>
+        <select name="qstation" id="qstation">
+            <option value="LAX">Los Angelos, CA</option>
+            <option value="MIA">Miami, FL</option>
+        </select><br>
+        Date of Transfer: <br> <input type="date" id="transferDate" name="Date of Transfer"  />
+        </section>
+       
+        <section>
+            <h2>First Flight Info</h2>
+            Departure Airport: <br>
+            <select name="departure" id="departure">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Arrival Airport: <br>
+            <select name="arrival" id="arrival">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours"><br>
+            Seat #: <br> <input type="text" id="seatNumber"><br>
+            Flight #: <br> <input type="text" id="flightNumber"><br>
+            Did they sit in their assigned seat?: <br>
+            <select name="sitInSeat" id="sitInSeat">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select><br>
+            Date of Flight: <br> <input type="date" id="flightDate" name="Date of Flight"  /><br>
+                          
+        </section>
+        <section>
+            <h2>Second Flight Info</h2>
+            Departure Airport: <br>
+            <select name="departure2" id="departure2">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Arrival Airport: <br>
+            <select name="arrival2" id="arrival2">
+                <option value="LAX">Los Angelos, CA</option>
+                <option value="MIA">Miami, FL</option>
+            </select><br>
+            Hours in Air: <br> <input type="text" id="flightHours2"><br>
+            Seat #: <br> <input type="text" id="seatNumber2"><br>
+            Flight #: <br> <input type="text" id="flightNumber2"><br>
+            Did they sit in their assigned seat?: <br>
+            <select name="sitInSeat2" id="sitInSeat2">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select><br>
+            Date of Flight: <br> <input type="date" id="flightDate2" name="Date of Flight"  /><br>
+                          
+        </section>
+       
+        <section>
+            <h2>Disease Info</h2>
+            Infectious Disease: <br>
+            <select name="Disease Name" id="diseaseName">
+                <option value="AN">Anthrax</option>
+                <option value="BO">Botulism</option>
+                <option value="CH">Cholera</option>
+                <option value="CO">Coronavirus</option>
+                <option value="DE">Denque</option>
+                <option value="EB">Ebola</option>
+                <option value="GO">Gonorrhea</option>
+                <option value="ME">Measles</option>
+                <option value="MA">Malaria</option>
+                <option value="MB">Marburg</option>
+                <option value="MD">Meningococcal disease</option>
+                <option value="MP">Mpox</option>
+                <option value="RA">Rabies</option>
+                <option value="RU">Rubella</option>
+                <option value="SM">Smallpox</option>
+                <option value="SY">Syphillis</option>
+                <option value="TB">Tuberculosis</option>
+                <option value="YF">Yellow Fever</option>
+                <option value="ZK">Zika</option>
+                <option value="WN">West Nile</option>
+            </select><br>
+            Symptoms: <br>
+            <select name="symptom1" id="sym1">
+                <option value="AN">Anthrax</option>
+                <option value="BO">Botulism</option>
+                <option value="CH">Cholera</option>
+                <option value="CO">Coronavirus</option>
+                <option value="DE">Denque</option>
+                <option value="EB">Ebola</option>
+                <option value="GO">Gonorrhea</option>
+                <option value="ME">Measles</option>
+                <option value="MA">Malaria</option>
+                <option value="MB">Marburg</option>
+                <option value="MD">Meningococcal disease</option>
+                <option value="MP">Mpox</option>
+                <option value="RA">Rabies</option>
+                <option value="RU">Rubella</option>
+                <option value="SM">Smallpox</option>
+                <option value="SY">Syphillis</option>
+                <option value="TB">Tuberculosis</option>
+                <option value="YF">Yellow Fever</option>
+                <option value="ZK">Zika</option>
+                <option value="WN">West Nile</option>
+            </select><br>
+                          
+        </section>
+        <input type="submit" value="Submit"> <a href="stateSurveillanceSystem/Report.html">Proceed to Report</a>
+        
+        </form>
+        <p id="result">     </p> 
+        <pre id="Reportoutput"></pre>
+    
+        </body> 
+    </html>
