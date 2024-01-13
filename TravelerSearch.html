@@ -90,15 +90,9 @@
      <script>
         function outputTravelerJson() {
             var lastName = document.getElementById('lastName').value;
-            let s = `https://api.logicahealth.org/AirCI/open/Patient?family=${lastName}!` 
+            let s = `https://api.logicahealth.org/AirCI/open/Patient?family=${lastName}` 
                         
             document.getElementById('Traveleroutput').innerHTML = s;
-            sendToCDC();
-            return false;
-        }
-        function sendToCDC(){
-            var lastName = document.getElementById('lastName').value;
-            var s = "https://api.logicahealth.org/AirCI/open/Patient?family=Bili" + lastname
             fetch(s, {
                 method: "GET",
                 body: JSON.stringify(data, null, 2),
@@ -116,8 +110,9 @@
                 });
             })
             .catch(error => console.log(error));
-
+            return false;
         }
+
     </script>
 </head>
 <body>
