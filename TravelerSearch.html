@@ -89,42 +89,10 @@
         </style>
      <script>
         function outputTravelerJson() {
-            var g = document.getElementById("diseaseName");
-         var diseaseName = g.options[e.selectedIndex].value;
-         var diseaseText = g.options[e.selectedIndex].text;
-            var data = {
-                "resourceType" : "Person",
-                "id" : "travelerExample",
-                "meta" : {
-                    "profile" : [
-                    "http://hl7.org/fhir/StructureDefinition/Person"
-                    ]
-                },
-                  "name" : [
-                        {
-                        "family" : lastName,
-                        "given" : [
-                        firstName
-                        ]
-                        }
-                    ],
-                "birthdate": dob,
-                "gender": sex,
-                "telecom" : [
-                        {
-                        "system" : "phone",
-                        "value" : phone,
-                        "use" : "home"
-                        },
-                        {
-                        "system" : "email",
-                        "value" : email
-                        }
-                    ]
-            };
-            document.getElementById('Traveleroutput').innerHTML = JSON.stringify(data, null, 2);
+            var lastName = document.getElementById('lastName').value;
+            var s = "https://api.logicahealth.org/AirCI/open/Patient?family=Bili" & lastname
             
-            document.getElementById('nextStep').innerHTML = "Traveler created, please proceed to completing the  <a href='Report.html'>Ill Traveler Report</a> ";
+            document.getElementById('Traveleroutput').innerHTML = s;
             sendToCDC();
             return false;
         }
@@ -171,7 +139,9 @@
     </form>
     <p id="result">     </p> 
     <li><label id="Reportoutput"></label></li>
-    <h1>Ill Travelers</h1>>
+    <h2>Ill Travelers</h2>>
     <ul></ul>
+    <pre id="Traveleroutput"></pre>
+    
     </body>
 </html>
