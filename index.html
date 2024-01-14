@@ -89,15 +89,12 @@
         </style>
      <script>
         function outputTravelerJson() {
-            var SCfirstName = document.getElementById('SCfirstName').value;
-         var SClastName = document.getElementById('SClastName').value;
-         var SCemail = document.getElementById('SCemail').value;
-         var LCfirstName = document.getElementById('LCfirstName').value;
-         var LClastName = document.getElementById('LClastName').value;
-         var LCemail = document.getElementById('LCemail').value;
-         var DCfirstName = document.getElementById('DCfirstName').value;
-         var DClastName = document.getElementById('DClastName').value;
-         var DCemail = document.getElementById('DCemail').value;
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            var sex = document.getElementById('sex').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
             var data = {
                 "resourceType" : "Person",
                 "id" : "travelerExample",
