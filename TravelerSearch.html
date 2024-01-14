@@ -105,7 +105,7 @@
                 //data.entry.forEach(function(element){
                   //  console.log(element);
                 data.entry.forEach(patient =>{
-                    const markup = '<li> ${patient.resource.name.family} </li>'
+                    const markup = `<li> ${patient.resource.name.family} </li>`
                     document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
                 });
             })
