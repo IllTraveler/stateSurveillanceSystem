@@ -100,7 +100,7 @@
                 return res.json();
             })
             .then(data => {
-                console.log(data);
+                console.log(data.entry);
                 data = JSON.parse(data);
                 console.log(data);
                 data.forEach(function(element){
