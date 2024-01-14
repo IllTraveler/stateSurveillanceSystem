@@ -101,8 +101,7 @@
             })
             .then(data => {
                 console.log(data.entry);
-                data = JSON.parse(data);
-                console.log(data);
+                data = JSON.parse(data.entry);
                 data.forEach(function(element){
                     console.log(element);
                 //data.forEach(patient =>{
