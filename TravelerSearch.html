@@ -105,7 +105,7 @@
                 //data.entry.forEach(function(element){
                   //  console.log(element);
                 data.entry.forEach(patient =>{
-                    const markup = `<li> ${patient.resource.name[0].given} , ${patient.resource.name[0].family} </li>`
+                    const markup = `<li> ${patient.resource.name[0].given}, ${patient.resource.name[0].family} </li>`
                     document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
                 });
             })
@@ -121,6 +121,7 @@
         <li>
         <label>Report of Ill Traveler Patient Search</label>
         </li>
+        <li><a href="TravelerSearch.html">Search for Ill Traveler</a> <a href="index.html">Create Report For Ill Traveler</a></li>
         <h2>Search By Disease</h2>
         <br>
         <li><label>Search by Last Name <span class="required">*</span></label>
@@ -133,10 +134,6 @@
     </ul>
     </form>
     <p id="result">     </p> 
-    <li><label id="Reportoutput"></label></li>
-    <h2>Ill Travelers</h2>>
-    <ul></ul>
-    <pre id="Traveleroutput"></pre>
     
     </body>
 </html>

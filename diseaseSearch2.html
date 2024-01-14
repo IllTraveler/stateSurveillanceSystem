@@ -89,15 +89,9 @@
         </style>
      <script>
         function outputTravelerJson() {
-            var SCfirstName = document.getElementById('SCfirstName').value;
-         var SClastName = document.getElementById('SClastName').value;
-         var SCemail = document.getElementById('SCemail').value;
-         var LCfirstName = document.getElementById('LCfirstName').value;
-         var LClastName = document.getElementById('LClastName').value;
-         var LCemail = document.getElementById('LCemail').value;
-         var DCfirstName = document.getElementById('DCfirstName').value;
-         var DClastName = document.getElementById('DClastName').value;
-         var DCemail = document.getElementById('DCemail').value;
+            var g = document.getElementById("diseaseName");
+         var diseaseName = g.options[e.selectedIndex].value;
+         var diseaseText = g.options[e.selectedIndex].text;
             var data = {
                 "resourceType" : "Person",
                 "id" : "travelerExample",
@@ -196,39 +190,30 @@
         <li>
         <label>Report of Ill Traveler</label>
         </li>
-        <li><a href="TravelerSearch.html">Search for Ill Traveler</a> <a href="index.html">Create Report For Ill Traveler</a></li>
-        <li>
-            <label label id="nextStep">Traveler Information</label>
-        </li>
-        <li>
-            <label label id="APIresponse">Response:</label>
-        </li>
-        <li><label>Full Name <span class="required">*</span></label>
-            <input type="text" name="field1" class="field-divided" id="firstName" placeholder="First" /> 
-            <input type="text" name="field2" class="field-divided" id="lastName" placeholder="Last" />
-        </li>
-        <li>
-            <label>Email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" class="field-long" />
-        </li>
-        <li>
-            <label>Date of Birth </label>
-            <input type="date" id="dob" name="Date of Birth" class="field-long" />
-        </li>
-        <li>
-            <label>Gender</label>
-            <select name="sex" id="sex" class="field-select">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-                <option value="unknown">Unknown</option>
-            </select>
-        </li>
-        Phone Number:<br>  <input type="text" id="phone"><br><br>
-        <li>
-            <label>Notes </label>
-            <textarea name="notes" id="notes" class="field-long field-textarea"></textarea>
-        </li>
+        <h2>Search By Disease</h2>
+        Infectious Disease Name: <br>
+        <select name="Disease Name" id="diseaseName">
+            <option value="AN">Anthrax</option>
+            <option value="BO">Botulism</option>
+            <option value="CH">Cholera</option>
+            <option value="CO">Coronavirus</option>
+            <option value="DE">Dengue</option>
+            <option value="EB">Ebola</option>
+            <option value="GO">Gonorrhea</option>
+            <option value="ME">Measles</option>
+            <option value="MA">Malaria</option>
+            <option value="MB">Marburg</option>
+            <option value="MD">Meningococcal disease</option>
+            <option value="MP">Mpox</option>
+            <option value="RA">Rabies</option>
+            <option value="RU">Rubella</option>
+            <option value="SM">Smallpox</option>
+            <option value="SY">Syphillis</option>
+            <option value="TB">Tuberculosis</option>
+            <option value="YF">Yellow Fever</option>
+            <option value="ZK">Zika</option>
+            <option value="WN">West Nile</option>
+        </select><br>
         <li>
             <input type="submit" value="Submit" />
         </li>
