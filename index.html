@@ -95,6 +95,7 @@
             var sex = document.getElementById('sex').value;
             var email = document.getElementById('email').value;
             var phone = document.getElementById('phone').value;
+            var text = document.getElementById('notes').value
             var data = {
                 "resourceType" : "Person",
                 "id" : "travelerExample",
@@ -113,6 +114,7 @@
                     ],
                 "birthdate": dob,
                 "gender": sex,
+                "text": text,
                 "telecom" : [
                         {
                         "system" : "phone",
@@ -221,7 +223,7 @@
                 <option value="unknown">Unknown</option>
             </select>
         </li>
-        Phone Number:<br>  <input type="text" id="phone"><br><br>
+        Phone Number:<br>  <input type="tel" id="phone"><br><br>
         <li>
             <label>Notes </label>
             <textarea name="notes" id="notes" class="field-long field-textarea"></textarea>
