@@ -200,7 +200,7 @@
                 //data.entry.forEach(function(element){
                   //  console.log(element);
                 data.entry.forEach(patient =>{
-                    const markup = `<li> ${patient.resource.name[0].given}, ${patient.resource.name[0].family} </li>`
+                    const markup = `<li> QARS ID: ${data.id} </li>`
                     document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
                 });
             })
