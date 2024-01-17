@@ -222,6 +222,7 @@
             return false;
      }
      function sendToCDC(){
+        var qarsId = document.getElementById('qarsId').value;
         var e = document.getElementById("departure");
         var departure = e.options[e.selectedIndex].value;
         var departureText = e.options[e.selectedIndex].text;
@@ -232,7 +233,7 @@
          var seatNumber = document.getElementById('seatNumber').value;
          var flightDate = document.getElementById('flightDate').value;
          var sitInSeat = document.getElementById('sitInSeat').value;
-         var airline = document.getElementById('airline').value;
+         var airline = document.getElementById('airlines').value;
          var flightNumber = document.getElementById('flightNumber').value;
          var g = document.getElementById("diseaseName");
          var diseaseName = g.options[e.selectedIndex].value;
@@ -337,7 +338,7 @@
                  ]
              },
              "subject" : {
-             "reference" : "Patient/travelerExample"
+             "reference" : qarsId,
              },
              "date" : "2023-12-03T19:43:30.000Z",
              "author" : [
