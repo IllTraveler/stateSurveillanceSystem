@@ -89,6 +89,7 @@
         </style>
    <script>
     function outputTravelerJson() {
+        var qarsId = document.getElementById("qarsId");
         var e = document.getElementById("departure");
         var departure = e.options[e.selectedIndex].value;
         var departureText = e.options[e.selectedIndex].text;
@@ -204,7 +205,7 @@
                  ]
              },
              "subject" : {
-             "reference" : "Patient/travelerExample"
+             "reference" : qarsId,
              },
              "date" : "2023-12-03T19:43:30.000Z",
              "author" : [
@@ -372,7 +373,10 @@
         <li>
             <label label id="nextStep">Patient Transfer Information</label>
         </li>
-    <li>
+        <li><label>QARS ID from previous screen<span class="required">*</span></label>
+        <input type="text" name="qarsId" class="field-divided" id="qarsId" placeholder="QARS ID" /> <br>
+        </li>
+        <li>
         <label>Date of Transfer: </label>
         <input type="date" id="transferDate" name="Date of Transfer" class="field-long" />
          <br>  
