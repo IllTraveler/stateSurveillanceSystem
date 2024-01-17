@@ -221,21 +221,30 @@
             return false;
      }
      function sendToCDC(){
-        //var departure = document.getElementById('departure').value;
-        //var departureText = document.getElementById('departure').text;
         var e = document.getElementById("departure");
         var departure = e.options[e.selectedIndex].value;
         var departureText = e.options[e.selectedIndex].text;
         var f = document.getElementById("arrival");
         var arrival = f.options[f.selectedIndex].value;
         var arrivalText = f.options[f.selectedIndex].text;
-         
          var flightHours = document.getElementById('flightHours').value;
          var seatNumber = document.getElementById('seatNumber').value;
          var flightDate = document.getElementById('flightDate').value;
          var sitInSeat = document.getElementById('sitInSeat').value;
+         var airline = document.getElementById('airline').value;
          var flightNumber = document.getElementById('flightNumber').value;
-            var data = {
+         var g = document.getElementById("diseaseName");
+         var diseaseName = g.options[e.selectedIndex].value;
+         var diseaseText = g.options[e.selectedIndex].text;
+         var h = document.getElementById("sym1");
+         var sym1Name = g.options[h.selectedIndex].value;
+         var sym1Text = g.options[h.selectedIndex].text;
+         var i = document.getElementById("sym2");
+         var sym2Name = g.options[i.selectedIndex].value;
+         var sym2Text = g.options[i.selectedIndex].text;
+         var sym1Date = document.getElementById('sym1Date').value;
+         var sym2Date = document.getElementById('sym2Date').value;
+         var data = {
              "resourceType" : "Composition",
              "id" : "ReportOfIllTravelerExample",
              "meta" : {
@@ -282,21 +291,39 @@
                      },
                      {
                      "url" : "airline",
+                     "valueInteger" : airline
+                     },
+                     {
+                     "url" : "airline",
                      "valueString" : "United"
+                     },
+                     {
+                     "url" : "infectious-disease-name",
+                     "valueCodeableConcept" : {
+                         "coding" : [
+                         {
+                             "code" : diseaseName,
+                             "display" : diseaseText
+                         }
+                         ]
                      }
+                     },{
+                     "url" : "symptoms",
+                     "valueCodeableConcept" : {
+                         "coding" : [
+                         {
+                             "code" : sym1Name,
+                             "display" : sym1Name
+                         }
+                         ]
+                     }
+                     },
+                     {
+                     "url" : "symptom-onset-date",
+                     "valueDate" : sym1Date
+                     },
                  ],
                  "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/flight-details"
-                 },
-                 {
-                 "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/disease-name",
-                 "valueCodeableConcept" : {
-                     "coding" : [
-                     {
-                         "code" : "TB",
-                         "display" : "Tuberculosis"
-                     }
-                     ]
-                 }
                  }
              ],
              "status" : "final",
