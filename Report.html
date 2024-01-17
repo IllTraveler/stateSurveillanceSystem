@@ -99,6 +99,7 @@
          var seatNumber = document.getElementById('seatNumber').value;
          var flightDate = document.getElementById('flightDate').value;
          var sitInSeat = document.getElementById('sitInSeat').value;
+         var airline = document.getElementById('airline').value;
          var flightNumber = document.getElementById('flightNumber').value;
          var g = document.getElementById("diseaseName");
          var diseaseName = g.options[e.selectedIndex].value;
@@ -155,6 +156,10 @@
                      {
                      "url" : "flightDuration",
                      "valueInteger" : flightHours
+                     },
+                     {
+                     "url" : "airline",
+                     "valueInteger" : airline
                      },
                      {
                      "url" : "airline",
@@ -485,6 +490,41 @@
         Hours in Air: <br> <input type="text" id="flightHours"><br>
         Seat #: <br> <input type="text" id="seatNumber"><br>
         Flight #: <br> <input type="text" id="flightNumber"><br>
+        Airline: <br>
+        <select name="airlines" id="airlines">
+            <option value="American Airlines">American Airlines</option>
+            <option value="Delta Air Lines">Delta Air Lines</option>
+            <option value="United Airlines">United Airlines</option>
+            <option value="Southwest Airlines">Southwest Airlines</option>
+            <option value="Air Canada">Air Canada</option>
+            <option value="British Airways">British Airways</option>
+            <option value="Lufthansa">Lufthansa</option>
+            <option value="Air France">Air France</option>
+            <option value="Qatar Airways">Qatar Airways</option>
+            <option value="Emirates">Emirates</option>
+            <option value="Singapore Airlines">Singapore Airlines</option>
+            <option value="Cathay Pacific">Cathay Pacific</option>
+            <option value="Qantas">Qantas</option>
+            <option value="Etihad Airways">Etihad Airways</option>
+            <option value="Turkish Airlines">Turkish Airlines</option>
+            <option value="Ryanair">Ryanair</option>
+            <option value="EasyJet">EasyJet</option>
+            <option value="Alaska Airlines">Alaska Airlines</option>
+            <option value="JetBlue">JetBlue</option>
+            <option value="Aer Lingus">Aer Lingus</option>
+            <option value="Virgin Atlantic">Virgin Atlantic</option>
+            <option value="Air New Zealand">Air New Zealand</option>
+            <option value="KLM">KLM</option>
+            <option value="Iberia">Iberia</option>
+            <option value="ANA">ANA</option>
+            <option value="Japan Airlines">Japan Airlines</option>
+            <option value="Air India">Air India</option>
+            <option value="China Southern Airlines">China Southern Airlines</option>
+            <option value="China Eastern Airlines">China Eastern Airlines</option>
+            <option value="Korean Air">Korean Air</option>
+            <option value="Aeroflot">Aeroflot</option>
+            <option value="LATAM Airlines">LATAM Airlines</option>
+          </select><br>
         Did they sit in their assigned seat?: <br>
         <select name="sitInSeat" id="sitInSeat">
             <option value="Y">Yes</option>
