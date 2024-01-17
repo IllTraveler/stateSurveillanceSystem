@@ -109,7 +109,8 @@
          var i = document.getElementById("sym2");
          var sym2Name = g.options[i.selectedIndex].value;
          var sym2Text = g.options[i.selectedIndex].text;
-         
+         var sym1Date = document.getElementById('sym1Date').value;
+         var sym2Date = document.getElementById('sym2Date').value;
          var data = {
              "resourceType" : "Composition",
              "id" : "ReportOfIllTravelerExample",
@@ -179,7 +180,11 @@
                          }
                          ]
                      }
-                     }
+                     },
+                     {
+                     "url" : "symptom-onset-date",
+                     "valueDate" : sym1Date
+                     },
                  ],
                  "url" : "http://hl7.org/fhir/us/reportofilltraveler/StructureDefinition/flight-details"
                  }
@@ -548,6 +553,7 @@
             <option value='UNK'>Unknown</option>
             <option value='56018004'>Wheezing (finding)</option>
         </select><br>
+        Symptom Onset Date: <br> <input type="date" id="sym1Date" name="Sym1 onset date"  /><br>
         Symptom: <br>
         <select name="symptom2" id="sym2">
             <option value='21522001'>Abdominal pain (finding)</option>
@@ -579,6 +585,8 @@
             <option value='UNK'>Unknown</option>
             <option value='56018004'>Wheezing (finding)</option>
         </select><br>
+        Symptom Onset Date: <br> <input type="date" id="sym2Date" name="Sym2 onset date"  /><br>
+
         <label for="myfile">Attach a lab result:</label>
         <input type="file" id="labResult" name="labResult">
 
