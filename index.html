@@ -199,10 +199,9 @@
                 //data = JSON.parse(data.entry);
                 //data.entry.forEach(function(element){
                   //  console.log(element);
-                data.entry.forEach(patient =>{
-                    const markup = `<li> QARS ID: ${data.id} </li>`
-                    document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-                });
+                const markup = `<li> QARS ID: ${data.id} </li>`
+                document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+                
             })
             .catch(error => console.log(error));
             return false;
