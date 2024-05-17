@@ -90,7 +90,7 @@
      <script>
         function outputTravelerJson() {
             var lastName = document.getElementById('lastName').value;
-            let s = `https://api.logicahealth.org/AirCI/open/Patient?family=${lastName}` 
+            let s = `https://gw.interop.community/CDCFrontDoor/open?family=${lastName}` 
                         
             document.getElementById('Traveleroutput').innerHTML = s;
             fetch(s, {
